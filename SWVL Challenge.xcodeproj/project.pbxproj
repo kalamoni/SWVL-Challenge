@@ -11,12 +11,14 @@
 		302B491C04B5EDD990AE40B3 /* Pods_SWVL_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61DDDA1265CC6475206C47E0 /* Pods_SWVL_ChallengeTests.framework */; };
 		582527FCA34A7B163CAA2B00 /* Pods_SWVL_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A05912824439DBF391E692D1 /* Pods_SWVL_Challenge.framework */; };
 		F9B07AF120B02AEB0001E191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07AF020B02AEB0001E191 /* AppDelegate.swift */; };
-		F9B07AF320B02AEB0001E191 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07AF220B02AEB0001E191 /* ViewController.swift */; };
+		F9B07AF320B02AEB0001E191 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07AF220B02AEB0001E191 /* MapViewController.swift */; };
 		F9B07AF620B02AEB0001E191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B07AF420B02AEB0001E191 /* Main.storyboard */; };
 		F9B07AF820B02AEC0001E191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9B07AF720B02AEC0001E191 /* Assets.xcassets */; };
 		F9B07AFB20B02AEC0001E191 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B07AF920B02AEC0001E191 /* LaunchScreen.storyboard */; };
 		F9B07B0620B02AEC0001E191 /* SWVL_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07B0520B02AEC0001E191 /* SWVL_ChallengeTests.swift */; };
 		F9B07B1120B02AEC0001E191 /* SWVL_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07B1020B02AEC0001E191 /* SWVL_ChallengeUITests.swift */; };
+		F9B07B1F20B0468D0001E191 /* MarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B07B1E20B0468D0001E191 /* MarkerView.xib */; };
+		F9B07B2120B048370001E191 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07B2020B048370001E191 /* MarkerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +50,7 @@
 		E285BC05CF7AE8EA6E8FE385 /* Pods-SWVL ChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWVL ChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWVL ChallengeUITests/Pods-SWVL ChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F9B07AED20B02AEB0001E191 /* SWVL Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWVL Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B07AF020B02AEB0001E191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F9B07AF220B02AEB0001E191 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F9B07AF220B02AEB0001E191 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F9B07AF520B02AEB0001E191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9B07AF720B02AEC0001E191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9B07AFA20B02AEC0001E191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +61,8 @@
 		F9B07B0C20B02AEC0001E191 /* SWVL ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SWVL ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B07B1020B02AEC0001E191 /* SWVL_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWVL_ChallengeUITests.swift; sourceTree = "<group>"; };
 		F9B07B1220B02AEC0001E191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9B07B1E20B0468D0001E191 /* MarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkerView.xib; sourceTree = "<group>"; };
+		F9B07B2020B048370001E191 /* MarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,11 +142,13 @@
 			isa = PBXGroup;
 			children = (
 				F9B07AF020B02AEB0001E191 /* AppDelegate.swift */,
-				F9B07AF220B02AEB0001E191 /* ViewController.swift */,
+				F9B07AF220B02AEB0001E191 /* MapViewController.swift */,
 				F9B07AF420B02AEB0001E191 /* Main.storyboard */,
 				F9B07AF720B02AEC0001E191 /* Assets.xcassets */,
 				F9B07AF920B02AEC0001E191 /* LaunchScreen.storyboard */,
 				F9B07AFC20B02AEC0001E191 /* Info.plist */,
+				F9B07B1E20B0468D0001E191 /* MarkerView.xib */,
+				F9B07B2020B048370001E191 /* MarkerView.swift */,
 			);
 			path = "SWVL Challenge";
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B07B1F20B0468D0001E191 /* MarkerView.xib in Resources */,
 				F9B07AFB20B02AEC0001E191 /* LaunchScreen.storyboard in Resources */,
 				F9B07AF820B02AEC0001E191 /* Assets.xcassets in Resources */,
 				F9B07AF620B02AEB0001E191 /* Main.storyboard in Resources */,
@@ -419,7 +426,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9B07AF320B02AEB0001E191 /* ViewController.swift in Sources */,
+				F9B07AF320B02AEB0001E191 /* MapViewController.swift in Sources */,
+				F9B07B2120B048370001E191 /* MarkerView.swift in Sources */,
 				F9B07AF120B02AEB0001E191 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
