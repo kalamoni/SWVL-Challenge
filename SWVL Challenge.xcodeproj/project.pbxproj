@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15FF24C0EB493278D8129B7A /* Pods_SWVL_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5CF75891DC861ACF7265CD /* Pods_SWVL_ChallengeUITests.framework */; };
+		302B491C04B5EDD990AE40B3 /* Pods_SWVL_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61DDDA1265CC6475206C47E0 /* Pods_SWVL_ChallengeTests.framework */; };
+		582527FCA34A7B163CAA2B00 /* Pods_SWVL_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A05912824439DBF391E692D1 /* Pods_SWVL_Challenge.framework */; };
 		F9B07AF120B02AEB0001E191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07AF020B02AEB0001E191 /* AppDelegate.swift */; };
 		F9B07AF320B02AEB0001E191 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07AF220B02AEB0001E191 /* ViewController.swift */; };
 		F9B07AF620B02AEB0001E191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B07AF420B02AEB0001E191 /* Main.storyboard */; };
@@ -34,6 +37,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DBA6BB6DC18E4C29386DF5C /* Pods-SWVL Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWVL Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWVL Challenge/Pods-SWVL Challenge.debug.xcconfig"; sourceTree = "<group>"; };
+		1E7B14B0910934E8446EEEBC /* Pods-SWVL ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWVL ChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWVL ChallengeTests/Pods-SWVL ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
+		4C6B99C064AE42B3A3504477 /* Pods-SWVL ChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWVL ChallengeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWVL ChallengeUITests/Pods-SWVL ChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		61DDDA1265CC6475206C47E0 /* Pods_SWVL_ChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWVL_ChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		638A24ED55DA0F531F40B2DC /* Pods-SWVL Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWVL Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWVL Challenge/Pods-SWVL Challenge.release.xcconfig"; sourceTree = "<group>"; };
+		7F4474AA74D5B7AE1851166F /* Pods-SWVL ChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWVL ChallengeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWVL ChallengeTests/Pods-SWVL ChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D5CF75891DC861ACF7265CD /* Pods_SWVL_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWVL_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A05912824439DBF391E692D1 /* Pods_SWVL_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWVL_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E285BC05CF7AE8EA6E8FE385 /* Pods-SWVL ChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWVL ChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWVL ChallengeUITests/Pods-SWVL ChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F9B07AED20B02AEB0001E191 /* SWVL Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWVL Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B07AF020B02AEB0001E191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9B07AF220B02AEB0001E191 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				582527FCA34A7B163CAA2B00 /* Pods_SWVL_Challenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302B491C04B5EDD990AE40B3 /* Pods_SWVL_ChallengeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15FF24C0EB493278D8129B7A /* Pods_SWVL_ChallengeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E3EF4E210917935907C7CCFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A05912824439DBF391E692D1 /* Pods_SWVL_Challenge.framework */,
+				61DDDA1265CC6475206C47E0 /* Pods_SWVL_ChallengeTests.framework */,
+				8D5CF75891DC861ACF7265CD /* Pods_SWVL_ChallengeUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF2965EEF5C8EDDE481D60AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0DBA6BB6DC18E4C29386DF5C /* Pods-SWVL Challenge.debug.xcconfig */,
+				638A24ED55DA0F531F40B2DC /* Pods-SWVL Challenge.release.xcconfig */,
+				7F4474AA74D5B7AE1851166F /* Pods-SWVL ChallengeTests.debug.xcconfig */,
+				1E7B14B0910934E8446EEEBC /* Pods-SWVL ChallengeTests.release.xcconfig */,
+				4C6B99C064AE42B3A3504477 /* Pods-SWVL ChallengeUITests.debug.xcconfig */,
+				E285BC05CF7AE8EA6E8FE385 /* Pods-SWVL ChallengeUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F9B07AE420B02AEA0001E191 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +119,8 @@
 				F9B07B0420B02AEC0001E191 /* SWVL ChallengeTests */,
 				F9B07B0F20B02AEC0001E191 /* SWVL ChallengeUITests */,
 				F9B07AEE20B02AEB0001E191 /* Products */,
+				EF2965EEF5C8EDDE481D60AD /* Pods */,
+				E3EF4E210917935907C7CCFD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9B07B1520B02AEC0001E191 /* Build configuration list for PBXNativeTarget "SWVL Challenge" */;
 			buildPhases = (
+				544C812F7AC438793EE25A08 /* [CP] Check Pods Manifest.lock */,
 				F9B07AE920B02AEB0001E191 /* Sources */,
 				F9B07AEA20B02AEB0001E191 /* Frameworks */,
 				F9B07AEB20B02AEB0001E191 /* Resources */,
+				19A9F76F598D59A23F22924C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +191,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9B07B1820B02AEC0001E191 /* Build configuration list for PBXNativeTarget "SWVL ChallengeTests" */;
 			buildPhases = (
+				E7836AB27EFC87B0D7C813D0 /* [CP] Check Pods Manifest.lock */,
 				F9B07AFD20B02AEC0001E191 /* Sources */,
 				F9B07AFE20B02AEC0001E191 /* Frameworks */,
 				F9B07AFF20B02AEC0001E191 /* Resources */,
+				B3321651CBDC9D9E8ED3ADA1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9B07B1B20B02AEC0001E191 /* Build configuration list for PBXNativeTarget "SWVL ChallengeUITests" */;
 			buildPhases = (
+				41402F6EA6C74687DC4B0C7E /* [CP] Check Pods Manifest.lock */,
 				F9B07B0820B02AEC0001E191 /* Sources */,
 				F9B07B0920B02AEC0001E191 /* Frameworks */,
 				F9B07B0A20B02AEC0001E191 /* Resources */,
+				2E702B11F36D41208D518C91 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +296,123 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19A9F76F598D59A23F22924C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SWVL Challenge/Pods-SWVL Challenge-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SWVL Challenge/Pods-SWVL Challenge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E702B11F36D41208D518C91 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SWVL ChallengeUITests/Pods-SWVL ChallengeUITests-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SWVL ChallengeUITests/Pods-SWVL ChallengeUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41402F6EA6C74687DC4B0C7E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWVL ChallengeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		544C812F7AC438793EE25A08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWVL Challenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3321651CBDC9D9E8ED3ADA1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SWVL ChallengeTests/Pods-SWVL ChallengeTests-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SWVL ChallengeTests/Pods-SWVL ChallengeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7836AB27EFC87B0D7C813D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWVL ChallengeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F9B07AE920B02AEB0001E191 /* Sources */ = {
@@ -428,6 +591,7 @@
 		};
 		F9B07B1620B02AEC0001E191 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DBA6BB6DC18E4C29386DF5C /* Pods-SWVL Challenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -447,6 +611,7 @@
 		};
 		F9B07B1720B02AEC0001E191 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 638A24ED55DA0F531F40B2DC /* Pods-SWVL Challenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +631,7 @@
 		};
 		F9B07B1920B02AEC0001E191 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F4474AA74D5B7AE1851166F /* Pods-SWVL ChallengeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +653,7 @@
 		};
 		F9B07B1A20B02AEC0001E191 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E7B14B0910934E8446EEEBC /* Pods-SWVL ChallengeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +675,7 @@
 		};
 		F9B07B1C20B02AEC0001E191 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C6B99C064AE42B3A3504477 /* Pods-SWVL ChallengeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -528,6 +696,7 @@
 		};
 		F9B07B1D20B02AEC0001E191 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E285BC05CF7AE8EA6E8FE385 /* Pods-SWVL ChallengeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
