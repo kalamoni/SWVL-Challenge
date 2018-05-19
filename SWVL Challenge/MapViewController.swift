@@ -13,11 +13,14 @@ import GooglePlaces
 class MapViewController: UIViewController, GMSMapViewDelegate {
     
     @IBOutlet var mapView: GMSMapView!
+    @IBOutlet var stationView: StationView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loadMapView()
+        stationView.bookmarkButton.layer.cornerRadius = 10
+        stationView.bookmarkButton.clipsToBounds = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,11 +59,27 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("did tap the Marker")
         
+        stationView.title?.text = marker.title ?? "-"
+        stationView.snippet?.text = marker.snippet ?? "-"
+        stationView.frame = self.view.frame
+        stationView.center = self.view.center
+        stationView.alpha = 0
+        self.view.addSubview(stationView)
+        self.stationView.transform = CGAffineTransform.identity
+        stationView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.stationView.transform = CGAffineTransform.identity
+            self.stationView.alpha = 1
+        })
+        
+        
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = Bundle.main.loadNibNamed("MarkerView", owner: nil, options: nil)!.first as! MarkerView
         view.layer.cornerRadius = 10
+        view.imageView.layer.cornerRadius = 10
         view.title?.text = marker.title ?? ""
         view.snippet?.text = marker.snippet ?? ""
         return view

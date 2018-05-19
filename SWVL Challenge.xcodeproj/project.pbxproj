@@ -19,6 +19,7 @@
 		F9B07B1120B02AEC0001E191 /* SWVL_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07B1020B02AEC0001E191 /* SWVL_ChallengeUITests.swift */; };
 		F9B07B1F20B0468D0001E191 /* MarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B07B1E20B0468D0001E191 /* MarkerView.xib */; };
 		F9B07B2120B048370001E191 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07B2020B048370001E191 /* MarkerView.swift */; };
+		F9B07B2520B0572A0001E191 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07B2420B0572A0001E191 /* StationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		F9B07B1220B02AEC0001E191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9B07B1E20B0468D0001E191 /* MarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkerView.xib; sourceTree = "<group>"; };
 		F9B07B2020B048370001E191 /* MarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
+		F9B07B2420B0572A0001E191 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				F9B07AFC20B02AEC0001E191 /* Info.plist */,
 				F9B07B1E20B0468D0001E191 /* MarkerView.xib */,
 				F9B07B2020B048370001E191 /* MarkerView.swift */,
+				F9B07B2420B0572A0001E191 /* StationView.swift */,
 			);
 			path = "SWVL Challenge";
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9B07AF320B02AEB0001E191 /* MapViewController.swift in Sources */,
+				F9B07B2520B0572A0001E191 /* StationView.swift in Sources */,
 				F9B07B2120B048370001E191 /* MarkerView.swift in Sources */,
 				F9B07AF120B02AEB0001E191 /* AppDelegate.swift in Sources */,
 			);
