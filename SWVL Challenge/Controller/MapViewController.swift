@@ -26,11 +26,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         stationView.bookmarkButton.clipsToBounds = true
         
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadLines), name: .FetchedLines, object: nil)
-
+        
         linesCollectionView.dataSource = self
         linesCollectionView.delegate = self
         linesCollectionView.backgroundColor = UIColor.clear
@@ -59,9 +60,43 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         marker.snippet = "Haram street"
         marker.appearAnimation = .pop
         marker.icon = #imageLiteral(resourceName: "Point")
-//        marker.infoWindowAnchor = CGPoint(x: 2, y: 0)
+        //        marker.infoWindowAnchor = CGPoint(x: 2, y: 0)
         marker.map = mapView
         
+    }
+    /**
+     This method is used to plot the stations of a certain line on the map.
+     
+     - parameter stations: an array of stations to plot.
+     */
+    func plotMarkers(stations: [Station]) {
+        mapView.clear()
+        
+        for index in 0..<stations.count {
+            let lat = stations[index].location.latitude
+            let long = stations[index].location.longitude
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            marker.title = stations[index].name
+            marker.snippet = stations[index].address
+            marker.appearAnimation = .pop
+            marker.icon = #imageLiteral(resourceName: "Point")
+            
+            switch index {
+            case 0:
+                marker.icon = #imageLiteral(resourceName: "StartPoint")
+                
+            case stations.count-1:
+                marker.icon = #imageLiteral(resourceName: "EndPoint")
+            default:
+                marker.icon = #imageLiteral(resourceName: "Point")
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + (Double(index) * 0.2)) {
+                marker.map = self.mapView
+            }
+            
+        }
     }
     
     /**
@@ -117,7 +152,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("select lines #\(indexPath.row)")
+        plotMarkers(stations: Lines.shared.linesList.lines[indexPath.row].stations)
     }
     
     /*
