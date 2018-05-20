@@ -10,10 +10,11 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet var mapView: GMSMapView!
     @IBOutlet var stationView: StationView!
+    @IBOutlet var linesCollectionView: UICollectionView!
     
     private let locationManager = CLLocationManager()
     
@@ -28,6 +29,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadLines), name: .FetchedLines, object: nil)
+
+        linesCollectionView.dataSource = self
+        linesCollectionView.delegate = self
+        linesCollectionView.backgroundColor = UIColor.clear
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,6 +42,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         // Dispose of any resources that can be recreated.
     }
     
+    /**
+     This method is used to setup the map view and set the default location.
+     */
     func loadMapView() {
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
@@ -54,11 +64,61 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
     }
     
+    /**
+     This method is used to asynchronously reload the lines once fetching the lines over the network is done.
+     */
+    @objc func reloadLines() {
+        DispatchQueue.main.async {
+            let range = Range(uncheckedBounds: (0, self.linesCollectionView.numberOfSections))
+            let indexSet = IndexSet(integersIn: range)
+            self.linesCollectionView.reloadSections(indexSet)
+        }
+    }
+    
+    /**
+     This method is used to get the user's location and centers the map view around his/her location.
+     
+     - parameter sender: a reference to the button that has been tapped.
+     */
     @IBAction func didTapLocateMe(_ sender: Any) {
-
         locationManager.startUpdatingLocation()
     }
     
+    /*
+     // MARK: - UICollectionViewDataSource
+     
+     */
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Lines.shared.linesList.lines.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = true
+        
+        let toLabel: UILabel = cell.viewWithTag(1) as! UILabel
+        if let firstStation = Lines.shared.linesList.lines[indexPath.row].stations.first?.name {
+            toLabel.text = firstStation
+        } else {
+            toLabel.text = "-"
+        }
+        
+        let fromLabel: UILabel = cell.viewWithTag(2) as! UILabel
+        if let lastStation = Lines.shared.linesList.lines[indexPath.row].stations.last?.name {
+            fromLabel.text = lastStation
+        } else {
+            fromLabel.text = "-"
+        }
+        toLabel.textColor = UIColor.SWVLGray
+        fromLabel.textColor = UIColor.SWVLGray
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("select lines #\(indexPath.row)")
+    }
     
     /*
      // MARK: - CLLocationManagerDelegate
@@ -76,6 +136,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
         let alert = UIAlertController(title: "SWVL Challenge", message: "Sorry, Can't locate your position now. Please enable location services in the Settings app."
             , preferredStyle: UIAlertControllerStyle.alert)
         alert.view.tintColor = UIColor.red
@@ -89,8 +150,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
      
      */
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print("did tap the Marker")
-        
         stationView.title?.text = marker.title ?? "-"
         stationView.snippet?.text = marker.snippet ?? "-"
         stationView.frame = self.view.frame
@@ -104,15 +163,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             self.stationView.transform = CGAffineTransform.identity
             self.stationView.alpha = 1
         })
-        
-        
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = Bundle.main.loadNibNamed("MarkerView", owner: nil, options: nil)!.first as! MarkerView
         view.layer.cornerRadius = 10
         view.imageView.layer.cornerRadius = 10
+        view.title.textColor = UIColor.SWVLGray
         view.title?.text = marker.title ?? ""
+        view.snippet.textColor = UIColor.SWVLLightGray
         view.snippet?.text = marker.snippet ?? ""
         return view
     }

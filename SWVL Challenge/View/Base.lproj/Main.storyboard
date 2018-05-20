@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,31 +25,93 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvl-LC-i46">
-                                <rect key="frame" x="307" y="519" width="42" height="42"/>
+                                <rect key="frame" x="317" y="498" width="42" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="GEI-Fc-mAq"/>
-                                    <constraint firstAttribute="height" constant="42" id="muc-ID-YQK"/>
+                                    <constraint firstAttribute="height" constant="42" id="bVZ-Zn-8Hp"/>
+                                    <constraint firstAttribute="width" constant="42" id="sNx-eU-jM6"/>
                                 </constraints>
                                 <state key="normal" image="LocateMe"/>
                                 <connections>
                                     <action selector="didTapLocateMe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="byO-AL-oQS"/>
                                 </connections>
                             </button>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWr-va-fhG">
+                                <rect key="frame" x="0.0" y="547" width="375" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="jl8-CB-K3j"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b4S-Ub-fBe">
+                                    <size key="itemSize" width="276" height="71"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="opG-Qn-3ks">
+                                        <rect key="frame" x="10" y="8" width="276" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="276" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="W90-ar-3fv">
+                                                    <rect key="frame" x="20" y="15" width="20" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="6he-Te-5HW"/>
+                                                        <constraint firstAttribute="width" constant="20" id="911-N6-ftO"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjY-HL-eVa">
+                                                    <rect key="frame" x="50" y="13" width="206" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4y-8u-fVU">
+                                                    <rect key="frame" x="50" y="37.5" width="206" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="k4y-8u-fVU" firstAttribute="top" secondItem="XjY-HL-eVa" secondAttribute="bottom" constant="5" id="6E9-HF-85K"/>
+                                            <constraint firstItem="k4y-8u-fVU" firstAttribute="top" secondItem="XjY-HL-eVa" secondAttribute="bottom" constant="5" id="A89-Ts-4ve"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="k4y-8u-fVU" secondAttribute="trailing" constant="12" id="VAJ-yf-Abo"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="k4y-8u-fVU" secondAttribute="bottom" constant="6" id="aiw-D7-Bsb"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="XjY-HL-eVa" secondAttribute="trailing" constant="12" id="dtX-tZ-blX"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="W90-ar-3fv" secondAttribute="bottom" constant="8" id="eFK-Ls-hLh"/>
+                                            <constraint firstItem="k4y-8u-fVU" firstAttribute="leading" secondItem="W90-ar-3fv" secondAttribute="trailing" constant="10" id="fPA-Yr-zfz"/>
+                                            <constraint firstItem="W90-ar-3fv" firstAttribute="top" secondItem="opG-Qn-3ks" secondAttribute="topMargin" constant="7" id="qzO-id-yB1"/>
+                                            <constraint firstItem="W90-ar-3fv" firstAttribute="leading" secondItem="opG-Qn-3ks" secondAttribute="leadingMargin" constant="12" id="rog-Er-IMk"/>
+                                            <constraint firstItem="XjY-HL-eVa" firstAttribute="leading" secondItem="W90-ar-3fv" secondAttribute="trailing" constant="10" id="vxD-k7-zmE"/>
+                                            <constraint firstItem="XjY-HL-eVa" firstAttribute="top" secondItem="opG-Qn-3ks" secondAttribute="topMargin" constant="5" id="yiS-th-erA"/>
+                                        </constraints>
+                                        <size key="customSize" width="276" height="71"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QcT-n5-LrW" secondAttribute="bottom" id="2Zh-iq-EAc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QcT-n5-LrW" secondAttribute="trailing" id="AfC-p6-10N"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wvl-LC-i46" secondAttribute="trailing" constant="16" id="GQb-bV-yYY"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OnI-Rd-h5r"/>
+                            <constraint firstItem="zWr-va-fhG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Tud-pM-OEQ"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aPf-Tl-uNG"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ebD-0l-XdR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zWr-va-fhG" secondAttribute="bottom" constant="33" id="gTW-rg-4Xw"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="iH6-6U-C9W"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Wvl-LC-i46" secondAttribute="bottom" constant="106" id="jd0-gt-0Ce"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wvl-LC-i46" secondAttribute="trailing" constant="26" id="olr-kZ-hs8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Wvl-LC-i46" secondAttribute="bottom" constant="127" id="uEN-ye-tRH"/>
+                            <constraint firstItem="zWr-va-fhG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zuv-cU-8tC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="linesCollectionView" destination="zWr-va-fhG" id="Op2-F0-IDC"/>
                         <outlet property="mapView" destination="QcT-n5-LrW" id="F4T-mX-nrM"/>
                         <outlet property="stationView" destination="TS6-aT-883" id="IBK-Dt-pwa"/>
                     </connections>
@@ -137,6 +200,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Line" width="13" height="37"/>
         <image name="LocateMe" width="42" height="42"/>
     </resources>
 </document>

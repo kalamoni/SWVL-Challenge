@@ -27,6 +27,6 @@ class MarkerView: UIView {
     }
     
     func commomInit() {
-        
+
     }
 }

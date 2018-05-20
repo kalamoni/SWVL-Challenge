@@ -25,8 +25,7 @@ class Lines {
     
     var linesList = LinesList(lines: []) {
         didSet {
-            //TODO: send notification
-            print("linesList updated: \(linesList.lines.count)")
+            NotificationCenter.default.post(name: .FetchedLines, object: nil)
         }
     }
     static let shared = Lines()
@@ -35,11 +34,11 @@ class Lines {
         
     }
     
-    
+    /**
+     This method is used to fetch the lines over the network.
+     */
     func fetchLines() {
-//        let defaultSession = URLSession(configuration: .default)
         var dataTask: URLSessionDataTask?
-        
         let urlAPI = URL(string: LinesAPI)
         
         guard let url = urlAPI else { return }
@@ -58,27 +57,16 @@ class Lines {
                 response.statusCode == 200 {
                 
                 do {
-                    
                     let decoder = JSONDecoder()
-                    let all = try decoder.decode(LinesList.self, from: data)
-                    
-                    print("\n=======struct Lines: \n\(all)\n========")
-                    self.linesList = all
-                    
+                    self.linesList = try decoder.decode(LinesList.self, from: data)
                 }
                 catch {
                     print("Error parsing lines json: \(error.localizedDescription)")
                     
                 }
-                
-                print("parsing json finished ....")
-                
             }
         }
-        
         dataTask?.resume()
-        
-        
     }
 }
 
