@@ -71,6 +71,16 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
      */
     func plotMarkers(stations: [Station]) {
         mapView.clear()
+        guard stations.count > 0 else { return }
+        
+        var bounds = GMSCoordinateBounds()
+        for station in stations
+        {
+            let coordinate = CLLocationCoordinate2D(latitude: station.location.latitude, longitude: station.location.longitude)
+            bounds = bounds.includingCoordinate(coordinate)
+        }
+        let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
+        mapView.animate(with: update)
         
         for index in 0..<stations.count {
             let lat = stations[index].location.latitude
@@ -92,7 +102,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                 marker.icon = #imageLiteral(resourceName: "Point")
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + (Double(index) * 0.2)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 + (Double(index) * 0.2)) {
                 marker.map = self.mapView
             }
             
