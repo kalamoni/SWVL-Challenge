@@ -15,6 +15,7 @@ class StationView: UIView {
     @IBOutlet var snippet: UILabel!
     @IBOutlet var bookmarkButton: UIButton!
     
+    var id = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +37,8 @@ class StationView: UIView {
      - parameter sender: a reference to the button that has been tapped.
      */
     @IBAction func didTapBookmark(_ sender: Any) {
-        print("did tap station \(title.text ?? "-") bookmark button")
+        print("did tap station with id: \(id) bookmark button")
+        //TODO: make network call to bookmark
     }
     
     /**

@@ -100,18 +100,20 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QcT-n5-LrW" secondAttribute="trailing" id="AfC-p6-10N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wvl-LC-i46" secondAttribute="trailing" constant="16" id="GQb-bV-yYY"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OnI-Rd-h5r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Wvl-LC-i46" secondAttribute="bottom" constant="127" id="Q1D-Hd-IKU"/>
                             <constraint firstItem="zWr-va-fhG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Tud-pM-OEQ"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aPf-Tl-uNG"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ebD-0l-XdR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zWr-va-fhG" secondAttribute="bottom" constant="33" id="gTW-rg-4Xw"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="iH6-6U-C9W"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Wvl-LC-i46" secondAttribute="bottom" constant="127" id="uEN-ye-tRH"/>
                             <constraint firstItem="zWr-va-fhG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zuv-cU-8tC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="linesCollectionView" destination="zWr-va-fhG" id="Op2-F0-IDC"/>
+                        <outlet property="linesCollectionViewBottomConstraint" destination="gTW-rg-4Xw" id="Kqs-OG-HOA"/>
+                        <outlet property="locateMeBottomConstraint" destination="Q1D-Hd-IKU" id="Omx-VC-JAl"/>
                         <outlet property="mapView" destination="QcT-n5-LrW" id="F4T-mX-nrM"/>
                         <outlet property="stationView" destination="TS6-aT-883" id="IBK-Dt-pwa"/>
                     </connections>

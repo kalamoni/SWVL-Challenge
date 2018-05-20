@@ -9,14 +9,13 @@
 import Foundation
 
 class NetworkManager {
-    private let LinesAPI = "http://private-ab8af-swvl.apiary-mock.com/lines"
     static let shared = NetworkManager()
     
     private init(){
         
     }
     
-    func getLines() {
+    func fetchImage(withURL: String) {
         
     }
     

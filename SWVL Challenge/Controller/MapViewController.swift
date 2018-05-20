@@ -15,6 +15,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     @IBOutlet var mapView: GMSMapView!
     @IBOutlet var stationView: StationView!
     @IBOutlet var linesCollectionView: UICollectionView!
+    @IBOutlet var linesCollectionViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var locateMeBottomConstraint: NSLayoutConstraint!
     
     private let locationManager = CLLocationManager()
     
@@ -36,6 +38,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         linesCollectionView.delegate = self
         linesCollectionView.backgroundColor = UIColor.clear
         
+        self.locateMeBottomConstraint.constant = 16
+        self.linesCollectionViewBottomConstraint.constant = -120
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,17 +57,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         mapView.settings.compassButton = true
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         mapView.camera = camera
-        
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 30.004, longitude: 31.186)
-        marker.title = "Dary"
-        marker.snippet = "Haram street"
-        marker.appearAnimation = .pop
-        marker.icon = #imageLiteral(resourceName: "Point")
-        //        marker.infoWindowAnchor = CGPoint(x: 2, y: 0)
-        marker.map = mapView
-        
     }
     /**
      This method is used to plot the stations of a certain line on the map.
@@ -90,6 +84,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             marker.title = stations[index].name
             marker.snippet = stations[index].address
             marker.appearAnimation = .pop
+            marker.userData = stations[index]
             marker.icon = #imageLiteral(resourceName: "Point")
             
             switch index {
@@ -117,6 +112,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             let range = Range(uncheckedBounds: (0, self.linesCollectionView.numberOfSections))
             let indexSet = IndexSet(integersIn: range)
             self.linesCollectionView.reloadSections(indexSet)
+            
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.25) {
+                self.locateMeBottomConstraint.constant = 127
+                self.linesCollectionViewBottomConstraint.constant = 33
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
@@ -200,6 +202,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         stationView.frame = self.view.frame
         stationView.center = self.view.center
         stationView.alpha = 0
+        if let station = marker.userData as? Station {
+            stationView.id = station.id
+        }
         self.view.addSubview(stationView)
         self.stationView.transform = CGAffineTransform.identity
         stationView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
@@ -218,6 +223,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         view.title?.text = marker.title ?? ""
         view.snippet.textColor = UIColor.SWVLLightGray
         view.snippet?.text = marker.snippet ?? ""
+        
+        //TODO: fetch image of the station
+        
+        if let station = marker.userData as? Station {
+            let imgURL = station.imgUrl
+        }
+        
         return view
     }
     
