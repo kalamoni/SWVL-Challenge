@@ -10,10 +10,12 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class MapViewController: UIViewController, GMSMapViewDelegate {
+class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet var mapView: GMSMapView!
     @IBOutlet var stationView: StationView!
+    
+    private let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         loadMapView()
         stationView.bookmarkButton.layer.cornerRadius = 10
         stationView.bookmarkButton.clipsToBounds = true
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,22 +36,47 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func loadMapView() {
-        // Create a GMSCameraPosition that tells the map to display the
-        // coordinate -33.86,151.20 at zoom level 6.
+        mapView.delegate = self
+        mapView.isMyLocationEnabled = true
+        mapView.settings.compassButton = true
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        //        let GMapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.camera = camera
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
+        marker.position = CLLocationCoordinate2D(latitude: 30.004, longitude: 31.186)
+        marker.title = "Dary"
+        marker.snippet = "Haram street"
+        marker.appearAnimation = .pop
+        marker.icon = #imageLiteral(resourceName: "Point")
+//        marker.infoWindowAnchor = CGPoint(x: 2, y: 0)
         marker.map = mapView
+        
     }
     
     @IBAction func didTapLocateMe(_ sender: Any) {
-        let alert = UIAlertController(title: "SWVL Challenge", message: "You tapped Locate Me!"
+
+        locationManager.startUpdatingLocation()
+    }
+    
+    
+    /*
+     // MARK: - CLLocationManagerDelegate
+     
+     */
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else {
+            return
+        }
+        
+        let cameraPos = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        mapView.animate(to: cameraPos)
+        
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let alert = UIAlertController(title: "SWVL Challenge", message: "Sorry, Can't locate your position now. Please enable location services in the Settings app."
             , preferredStyle: UIAlertControllerStyle.alert)
         alert.view.tintColor = UIColor.red
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)

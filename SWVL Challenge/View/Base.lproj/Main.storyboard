@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Delegate-->
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="SWVL_Challenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,9 +22,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QcT-n5-LrW" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vfi-19-zk6"/>
-                                </connections>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvl-LC-i46">
                                 <rect key="frame" x="307" y="519" width="42" height="42"/>
