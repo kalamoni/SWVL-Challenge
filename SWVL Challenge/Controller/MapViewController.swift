@@ -71,11 +71,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         var bounds = GMSCoordinateBounds()
         let path = GMSMutablePath()
+        
         for station in stations
         {
             let coordinate = CLLocationCoordinate2D(latitude: station.location.latitude, longitude: station.location.longitude)
             bounds = bounds.includingCoordinate(coordinate)
-            path.add(coordinate)
         }
         let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
         mapView.animate(with: update)
@@ -102,6 +102,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                 marker.icon = #imageLiteral(resourceName: "Point")
             }
             
+            let initCoord = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            path.add(initCoord)
+            
+            if index < stations.count-2 {
+                let finalCoord = CLLocationCoordinate2D(latitude: stations[index+1].location.latitude, longitude: stations[index+1].location.longitude)
+                path.add(finalCoord)
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 + (Double(index) * 0.2)) {
                 marker.map = self.mapView
             }
@@ -110,7 +118,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             polyline.strokeColor = UIColor.SWVLBookmark
             polyline.strokeWidth = 5
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6 + (Double(index) * 0.2)) {
                 polyline.map = self.mapView
             }
             
