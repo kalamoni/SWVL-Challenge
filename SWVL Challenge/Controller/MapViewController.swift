@@ -70,10 +70,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         guard stations.count > 0 else { return }
         
         var bounds = GMSCoordinateBounds()
+        let path = GMSMutablePath()
         for station in stations
         {
             let coordinate = CLLocationCoordinate2D(latitude: station.location.latitude, longitude: station.location.longitude)
             bounds = bounds.includingCoordinate(coordinate)
+            path.add(coordinate)
         }
         let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
         mapView.animate(with: update)
@@ -88,11 +90,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             marker.appearAnimation = .pop
             marker.userData = stations[index]
             marker.icon = #imageLiteral(resourceName: "Point")
+            marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
+            marker.tracksInfoWindowChanges = true
             
             switch index {
             case 0:
                 marker.icon = #imageLiteral(resourceName: "StartPoint")
-                
             case stations.count-1:
                 marker.icon = #imageLiteral(resourceName: "EndPoint")
             default:
@@ -102,6 +105,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 + (Double(index) * 0.2)) {
                 marker.map = self.mapView
             }
+            
+            let polyline = GMSPolyline(path: path)
+            polyline.strokeColor = UIColor.SWVLBookmark
+            polyline.strokeWidth = 5
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                polyline.map = self.mapView
+            }
+            
             
         }
     }
@@ -261,8 +273,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         view.title?.text = marker.title ?? ""
         view.snippet.textColor = UIColor.SWVLLightGray
         view.snippet?.text = marker.snippet ?? ""
-        
-        //TODO: fetch image of the station
         
         if let station = marker.userData as? Station {
             let imgURL = station.imgUrl

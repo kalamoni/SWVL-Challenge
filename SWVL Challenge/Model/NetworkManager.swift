@@ -29,6 +29,7 @@ class NetworkManager {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        request.timeoutInterval = 60
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -65,6 +66,7 @@ class NetworkManager {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.timeoutInterval = 60
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
