@@ -223,7 +223,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
      */
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         stationView.title?.text = marker.title ?? "-"
+        stationView.title.textColor = UIColor.SWVLGray
         stationView.snippet?.text = marker.snippet ?? "-"
+        stationView.snippet.textColor = UIColor.SWVLLightGray
+        stationView.bookmarkButton.layer.backgroundColor = UIColor.SWVLBookmark.cgColor
         stationView.frame = self.view.frame
         stationView.center = self.view.center
         stationView.alpha = 0
@@ -244,10 +247,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         self.stationView.transform = CGAffineTransform.identity
         stationView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
         
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: [], animations: {
             self.stationView.transform = CGAffineTransform.identity
             self.stationView.alpha = 1
-        })
+        }, completion: nil)
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {

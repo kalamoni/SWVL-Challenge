@@ -9,7 +9,7 @@
 import UIKit
 
 class StationView: UIView {
-
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var title: UILabel!
     @IBOutlet var snippet: UILabel!
@@ -37,12 +37,16 @@ class StationView: UIView {
      - parameter sender: a reference to the button that has been tapped.
      */
     @IBAction func didTapDismiss(_ sender: Any) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-            self.alpha = 0
-        }) { (success: Bool) in
-            self.transform = CGAffineTransform.identity
-            self.removeFromSuperview()
+        UIView.animate(withDuration: 0.1, animations: {
+            self.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }) {(success: Bool) in
+            UIView.animate(withDuration: 0.2, animations: {
+                self.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+                self.alpha = 0
+            }) { (success: Bool) in
+                self.transform = CGAffineTransform.identity
+                self.removeFromSuperview()
+            }
         }
     }
     

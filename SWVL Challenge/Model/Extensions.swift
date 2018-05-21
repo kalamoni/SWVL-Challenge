@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
-
+    
     /**
      SWVL custom red color (RGBA: 235, 67, 78, 1).
      */
@@ -18,6 +18,12 @@ extension UIColor {
         return UIColor(red: 235/255, green: 67/255, blue: 78/255, alpha: 1)
     }
     
+    /**
+     SWVL custom red color (RGBA: 235, 67, 78, 1).
+     */
+    @nonobjc static var SWVLBookmark: UIColor {
+        return UIColor(red: 253/255, green: 94/255, blue: 84/255, alpha: 1)
+    }
     /**
      SWVL custom grey color (RGBA: 235, 67, 78, 1).
      */
