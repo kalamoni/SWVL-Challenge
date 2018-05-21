@@ -26,6 +26,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         loadMapView()
         stationView.bookmarkButton.layer.cornerRadius = 10
         stationView.bookmarkButton.clipsToBounds = true
+        stationView.title.textColor = UIColor.SWVLGray
+        stationView.snippet.textColor = UIColor.SWVLLightGray
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -204,7 +206,17 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         stationView.alpha = 0
         if let station = marker.userData as? Station {
             stationView.id = station.id
+            let imgURL = station.imgUrl
+            
+            NetworkManager.shared.fetchImage(withURL: imgURL) { (downloaded: Bool, img: UIImage?) in
+                if downloaded == true, let image = img {
+                    DispatchQueue.main.async {
+                        self.stationView.imageView.image = image
+                    }
+                }
+            }
         }
+        
         self.view.addSubview(stationView)
         self.stationView.transform = CGAffineTransform.identity
         stationView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
@@ -228,6 +240,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         if let station = marker.userData as? Station {
             let imgURL = station.imgUrl
+            
+            NetworkManager.shared.fetchImage(withURL: imgURL) { (downloaded: Bool, img: UIImage?) in
+                if downloaded == true, let image = img {
+                    DispatchQueue.main.async {
+                        view.imageView.image = image
+                    }
+                }
+            }
         }
         
         return view

@@ -136,14 +136,13 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uk8-IM-yCV">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uk8-IM-yCV">
                             <rect key="frame" x="24" y="44" width="42" height="42"/>
-                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="0CA-vJ-df7"/>
                                 <constraint firstAttribute="width" constant="42" id="gGb-mG-WjD"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                             <state key="normal" title="X">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -152,7 +151,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="477-ah-S3f">
-                            <rect key="frame" x="38" y="366" width="299" height="20.5"/>
+                            <rect key="frame" x="38" y="356" width="299" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -181,7 +180,7 @@
                         <constraint firstItem="Uk8-IM-yCV" firstAttribute="leading" secondItem="PlD-Qe-2X4" secondAttribute="leading" constant="24" id="Edr-gQ-x0K"/>
                         <constraint firstItem="CX0-9C-eBa" firstAttribute="top" secondItem="sJ9-e5-N4P" secondAttribute="bottom" constant="30" id="JLk-RE-kMg"/>
                         <constraint firstItem="sJ9-e5-N4P" firstAttribute="leading" secondItem="PlD-Qe-2X4" secondAttribute="leading" id="Kij-qF-1nK"/>
-                        <constraint firstItem="477-ah-S3f" firstAttribute="top" secondItem="CX0-9C-eBa" secondAttribute="bottom" constant="30" id="OBp-ke-EN5"/>
+                        <constraint firstItem="477-ah-S3f" firstAttribute="top" secondItem="CX0-9C-eBa" secondAttribute="bottom" constant="20" id="OBp-ke-EN5"/>
                         <constraint firstItem="477-ah-S3f" firstAttribute="leading" secondItem="PlD-Qe-2X4" secondAttribute="leading" constant="38" id="PHK-UN-wiK"/>
                         <constraint firstItem="sJ9-e5-N4P" firstAttribute="top" secondItem="TS6-aT-883" secondAttribute="top" id="VZV-AY-HYv"/>
                         <constraint firstItem="PlD-Qe-2X4" firstAttribute="trailing" secondItem="CX0-9C-eBa" secondAttribute="trailing" constant="38" id="ZF4-iY-vLw"/>
