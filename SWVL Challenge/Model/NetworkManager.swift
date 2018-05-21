@@ -17,7 +17,7 @@ class NetworkManager {
     
     /**
      This method is used to retrieve an image URL over the netwrok, and calls a handler upon completion.
-    */
+     */
     func fetchImage(withURL imgURL: String, completionHandler: @escaping (_ success: Bool, _ img: UIImage?) -> Void) {
         
         let urlAPI = URL(string: imgURL)
@@ -27,7 +27,7 @@ class NetworkManager {
             return
         }
         
-        var request =  URLRequest(url: url)
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -46,11 +46,39 @@ class NetworkManager {
                     completionHandler(false, nil)
                     print("Error creating image: unresolved error")
                 }
-                
             }
             }.resume()
-        
     }
     
+    
+    /**
+     This method is used to retrieve an image URL over the netwrok, and calls a handler upon completion.
+     */
+    func bookmarkStation(withID id: String, completionHandler: @escaping (_ success: Bool) -> Void) {
+        
+        let urlAPI = URL(string: "http://private-ab8af-swvl.apiary-mock.com/station/\(id)/bookmark")
+        
+        guard let url = urlAPI else {
+            completionHandler(false)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let error = error {
+                completionHandler(false)
+                print("Error bookmarking station: \(error.localizedDescription)")
+            } else if let data = data {
+                print(data)
+                completionHandler(true)
+            } else {
+                completionHandler(false)
+                print("Error bookmarking station: unresolved error")
+            }
+            }.resume()
+    }
     
 }

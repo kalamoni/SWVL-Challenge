@@ -43,7 +43,7 @@ class Lines {
         
         guard let url = urlAPI else { return }
         
-        var request =  URLRequest(url: url)
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
         dataTask?.cancel()
@@ -62,7 +62,6 @@ class Lines {
                 }
                 catch {
                     print("Error parsing lines json: \(error.localizedDescription)")
-                    
                 }
             }
         }

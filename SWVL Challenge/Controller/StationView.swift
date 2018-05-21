@@ -32,16 +32,6 @@ class StationView: UIView {
     }
     
     /**
-     This method is used to add the station to the user's bookmarks list.
-     
-     - parameter sender: a reference to the button that has been tapped.
-     */
-    @IBAction func didTapBookmark(_ sender: Any) {
-        print("did tap station with id: \(id) bookmark button")
-        //TODO: make network call to bookmark
-    }
-    
-    /**
      This method is used to dismiss the station's view and get back to the map view.
      
      - parameter sender: a reference to the button that has been tapped.

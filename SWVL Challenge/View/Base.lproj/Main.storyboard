@@ -167,7 +167,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="didTapBookmark:" destination="TS6-aT-883" eventType="touchUpInside" id="irl-Vf-rb5"/>
+                                <action selector="didTapBookmark:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BSK-Hb-B3H"/>
                             </connections>
                         </button>
                     </subviews>

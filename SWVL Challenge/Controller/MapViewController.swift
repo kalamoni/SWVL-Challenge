@@ -133,6 +133,29 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         locationManager.startUpdatingLocation()
     }
     
+    /**
+     This method is used to add the station to the user's bookmarks list.
+     
+     - parameter sender: a reference to the button that has been tapped.
+     */
+    @IBAction func didTapBookmark(_ sender: Any) {
+        
+        NetworkManager.shared.bookmarkStation(withID: "\(stationView.id)") { (success) in
+            var msg = ""
+            if (success) {
+                msg = "Station is added to your bookmarks list successfully."
+            } else {
+                msg = "Sorry, something went wrong. Please try again later"
+            }
+            let alert = UIAlertController(title: "SWVL Challenge", message: msg
+                , preferredStyle: UIAlertControllerStyle.alert)
+            alert.view.tintColor = UIColor.red
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     /*
      // MARK: - UICollectionViewDataSource
      
