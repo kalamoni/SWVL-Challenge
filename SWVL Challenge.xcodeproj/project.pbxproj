@@ -10,6 +10,8 @@
 		15FF24C0EB493278D8129B7A /* Pods_SWVL_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5CF75891DC861ACF7265CD /* Pods_SWVL_ChallengeUITests.framework */; };
 		302B491C04B5EDD990AE40B3 /* Pods_SWVL_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61DDDA1265CC6475206C47E0 /* Pods_SWVL_ChallengeTests.framework */; };
 		582527FCA34A7B163CAA2B00 /* Pods_SWVL_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A05912824439DBF391E692D1 /* Pods_SWVL_Challenge.framework */; };
+		F920478620B46F7000A09C6F /* BusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920478520B46F6F00A09C6F /* BusView.swift */; };
+		F920478820B46F8A00A09C6F /* BusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F920478720B46F8A00A09C6F /* BusView.xib */; };
 		F94B94C220B1994700CCB5E0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94B94C120B1994700CCB5E0 /* Extensions.swift */; };
 		F9B07AF120B02AEB0001E191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07AF020B02AEB0001E191 /* AppDelegate.swift */; };
 		F9B07AF320B02AEB0001E191 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B07AF220B02AEB0001E191 /* MapViewController.swift */; };
@@ -54,6 +56,8 @@
 		8D5CF75891DC861ACF7265CD /* Pods_SWVL_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWVL_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05912824439DBF391E692D1 /* Pods_SWVL_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWVL_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E285BC05CF7AE8EA6E8FE385 /* Pods-SWVL ChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWVL ChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWVL ChallengeUITests/Pods-SWVL ChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F920478520B46F6F00A09C6F /* BusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusView.swift; sourceTree = "<group>"; };
+		F920478720B46F8A00A09C6F /* BusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusView.xib; sourceTree = "<group>"; };
 		F94B94C120B1994700CCB5E0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F9B07AED20B02AEB0001E191 /* SWVL Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWVL Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B07AF020B02AEB0001E191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				F9B07AF920B02AEC0001E191 /* LaunchScreen.storyboard */,
 				F9B07AF420B02AEB0001E191 /* Main.storyboard */,
 				F9B07B1E20B0468D0001E191 /* MarkerView.xib */,
+				F920478720B46F8A00A09C6F /* BusView.xib */,
 				F9B07AF720B02AEC0001E191 /* Assets.xcassets */,
 			);
 			path = View;
@@ -209,6 +214,7 @@
 				F9B07AF220B02AEB0001E191 /* MapViewController.swift */,
 				F9B07B2020B048370001E191 /* MarkerView.swift */,
 				F9B07B2420B0572A0001E191 /* StationView.swift */,
+				F920478520B46F6F00A09C6F /* BusView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F920478820B46F8A00A09C6F /* BusView.xib in Resources */,
 				F9B07B1F20B0468D0001E191 /* MarkerView.xib in Resources */,
 				F9B07AFB20B02AEC0001E191 /* LaunchScreen.storyboard in Resources */,
 				F9B07AF820B02AEC0001E191 /* Assets.xcassets in Resources */,
@@ -355,12 +362,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SWVL Challenge/Pods-SWVL Challenge-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -375,12 +380,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SWVL ChallengeUITests/Pods-SWVL ChallengeUITests-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -431,12 +434,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SWVL ChallengeTests/Pods-SWVL ChallengeTests-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -471,6 +472,7 @@
 				F9B07B2A20B071D20001E191 /* Lines.swift in Sources */,
 				F94B94C220B1994700CCB5E0 /* Extensions.swift in Sources */,
 				F9B07AF320B02AEB0001E191 /* MapViewController.swift in Sources */,
+				F920478620B46F7000A09C6F /* BusView.swift in Sources */,
 				F9D453EB20B0AD8900ED2E1A /* Location.swift in Sources */,
 				F9B07B2520B0572A0001E191 /* StationView.swift in Sources */,
 				F9B07B2E20B075050001E191 /* NetworkManager.swift in Sources */,
