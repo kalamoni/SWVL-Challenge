@@ -62,7 +62,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         mapView.camera = camera
     }
     /**
-     This method is used to plot the stations of a certain line on the map.
+     This method is used to plot the stations of a certain line on the map. And then plot the bus and start moving it along the line.
      
      - parameter stations: an array of stations to plot.
      */
@@ -81,11 +81,22 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
         mapView.animate(with: update)
         
+        let busMarker = GMSMarker()
+        busMarker.title = "-"
+        busMarker.snippet = "-"
+        busMarker.appearAnimation = .pop
+        busMarker.userData = "bus"
+        busMarker.icon = #imageLiteral(resourceName: "Bus")
+        busMarker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
+        busMarker.map = self.mapView
+        
         for index in 0..<stations.count {
             let lat = stations[index].location.latitude
             let long = stations[index].location.longitude
+            let pos = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            
             let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            marker.position = pos
             marker.title = stations[index].name
             marker.snippet = stations[index].address
             marker.appearAnimation = .pop
@@ -111,18 +122,24 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                 path.add(finalCoord)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 + (Double(index) * 0.2)) {
-                marker.map = self.mapView
-            }
-            
             let polyline = GMSPolyline(path: path)
             polyline.strokeColor = UIColor.SWVLBookmark
             polyline.strokeWidth = 5
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 + (Double(index) * 0.2)) {
+                marker.map = self.mapView
+            }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6 + (Double(index) * 0.2)) {
                 polyline.map = self.mapView
             }
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1 + (Double(index) * 2)) {
+                CATransaction.begin()
+                CATransaction.setAnimationDuration(2)
+                busMarker.position = pos
+                CATransaction.commit()
+            }
             
         }
     }
