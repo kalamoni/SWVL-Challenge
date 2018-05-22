@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleMaps
-import GooglePlaces
 
 class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -35,6 +34,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         locationManager.startUpdatingLocation()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadLines), name: .FetchedLines, object: nil)
+        
+        Lines.shared.fetchLines()
         
         linesCollectionView.dataSource = self
         linesCollectionView.delegate = self
@@ -165,7 +166,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             if (success) {
                 msg = "Station is added to your bookmarks list successfully."
             } else {
-                msg = "Sorry, something went wrong. Please try again later"
+                msg = "Sorry, something went wrong. Please try again later."
             }
             let alert = UIAlertController(title: "SWVL Challenge", message: msg
                 , preferredStyle: UIAlertControllerStyle.alert)
@@ -242,38 +243,56 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
      
      */
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        stationView.title?.text = marker.title ?? "-"
-        stationView.title.textColor = UIColor.SWVLGray
-        stationView.snippet?.text = marker.snippet ?? "-"
-        stationView.snippet.textColor = UIColor.SWVLLightGray
-        stationView.bookmarkButton.layer.backgroundColor = UIColor.SWVLBookmark.cgColor
-        stationView.frame = self.view.frame
-        stationView.center = self.view.center
-        stationView.alpha = 0
-        if let station = marker.userData as? Station {
-            stationView.id = station.id
-            let imgURL = station.imgUrl
-            
-            NetworkManager.shared.fetchImage(withURL: imgURL) { (downloaded: Bool, img: UIImage?) in
-                if downloaded == true, let image = img {
-                    DispatchQueue.main.async {
-                        self.stationView.imageView.image = image
+        if let bus = marker.userData as? String, bus == "bus" {
+            let alert = UIAlertController(title: "SWVL Challenge", message: "this is a bus."
+                , preferredStyle: UIAlertControllerStyle.alert)
+            alert.view.tintColor = UIColor.red
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            stationView.title?.text = marker.title ?? "-"
+            stationView.title.textColor = UIColor.SWVLGray
+            stationView.snippet?.text = marker.snippet ?? "-"
+            stationView.snippet.textColor = UIColor.SWVLLightGray
+            stationView.bookmarkButton.layer.backgroundColor = UIColor.SWVLBookmark.cgColor
+            stationView.frame = self.view.frame
+            stationView.center = self.view.center
+            stationView.alpha = 0
+            if let station = marker.userData as? Station {
+                stationView.id = station.id
+                let imgURL = station.imgUrl
+                
+                NetworkManager.shared.fetchImage(withURL: imgURL) { (downloaded: Bool, img: UIImage?) in
+                    if downloaded == true, let image = img {
+                        DispatchQueue.main.async {
+                            self.stationView.imageView.image = image
+                        }
                     }
                 }
             }
-        }
-        
-        self.view.addSubview(stationView)
-        self.stationView.transform = CGAffineTransform.identity
-        stationView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: [], animations: {
+            
+            self.view.addSubview(stationView)
             self.stationView.transform = CGAffineTransform.identity
-            self.stationView.alpha = 1
-        }, completion: nil)
+            stationView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: [], animations: {
+                self.stationView.transform = CGAffineTransform.identity
+                self.stationView.alpha = 1
+            }, completion: nil)
+            
+        }
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        if let bus = marker.userData as? String, bus == "bus" {
+            let view = Bundle.main.loadNibNamed("BusView", owner: nil, options: nil)!.first as! BusView
+            view.label.textColor = UIColor.SWVLLightGray
+            view.label.adjustsFontSizeToFitWidth = true
+            view.label.text = "Swv 123"
+            return view
+        }
+        
         let view = Bundle.main.loadNibNamed("MarkerView", owner: nil, options: nil)!.first as! MarkerView
         view.layer.cornerRadius = 10
         view.imageView.layer.cornerRadius = 10
@@ -289,6 +308,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                 if downloaded == true, let image = img {
                     DispatchQueue.main.async {
                         view.imageView.image = image
+                        marker.tracksInfoWindowChanges = false
                     }
                 }
             }
