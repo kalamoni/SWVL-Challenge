@@ -35,22 +35,10 @@ class Lines {
     }
     
     /**
-     This method is used to fetch the lines over the network.
+     This method is used to fetch the lines over the network using the NetworkManager.
      */
     func fetchLines() {
-        var dataTask: URLSessionDataTask?
-        let urlAPI = URL(string: LinesAPI)
-        
-        guard let url = urlAPI else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.timeoutInterval = 60
-        
-        dataTask?.cancel()
-        dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
-            defer { dataTask = nil }
-            
+        NetworkManager.shared.fetchLines { (data, response, error) in
             if let error = error {
                 print("Lines API error: \(error.localizedDescription)")
             } else if let data = data,
@@ -66,7 +54,6 @@ class Lines {
                 }
             }
         }
-        dataTask?.resume()
     }
 }
 

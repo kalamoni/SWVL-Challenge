@@ -10,9 +10,37 @@ import Foundation
 import UIKit
 
 class NetworkManager {
+    private enum NetworkError: Error {
+        case APISyntaxError
+    }
     static let shared = NetworkManager()
+    private let LinesAPI = "http://private-ab8af-swvl.apiary-mock.com/lines"
     
     private init(){
+    }
+    
+    /**
+     This method is used to fetch the lines over the network, and calls a handler upon completion.
+     */
+    func fetchLines(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        var dataTask: URLSessionDataTask?
+        let urlAPI = URL(string: LinesAPI)
+        
+        guard let url = urlAPI else {
+            completionHandler(nil, nil, NetworkError.APISyntaxError)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.timeoutInterval = 60
+        
+        dataTask?.cancel()
+        dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+            defer { dataTask = nil }
+            completionHandler(data, response, error)
+        }
+        dataTask?.resume()
     }
     
     /**
