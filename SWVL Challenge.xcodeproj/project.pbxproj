@@ -159,6 +159,7 @@
 			children = (
 				F9B07AF020B02AEB0001E191 /* AppDelegate.swift */,
 				F9B07AFC20B02AEC0001E191 /* Info.plist */,
+				F9B07AF720B02AEC0001E191 /* Assets.xcassets */,
 				F9B07B2820B071820001E191 /* Controller */,
 				F9B07B2720B071790001E191 /* Model */,
 				F9B07B2620B0716B0001E191 /* View */,
@@ -191,7 +192,6 @@
 				F9B07AF420B02AEB0001E191 /* Main.storyboard */,
 				F9B07B1E20B0468D0001E191 /* MarkerView.xib */,
 				F920478720B46F8A00A09C6F /* BusView.xib */,
-				F9B07AF720B02AEC0001E191 /* Assets.xcassets */,
 			);
 			path = View;
 			sourceTree = "<group>";

@@ -40,6 +40,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         linesCollectionView.dataSource = self
         linesCollectionView.delegate = self
         linesCollectionView.backgroundColor = UIColor.clear
+        linesCollectionView.accessibilityIdentifier = "linesCollectionView"
+        
+        mapView.accessibilityElementsHidden = false
+        mapView.accessibilityIdentifier = "mapView"
+        
         
         self.locateMeBottomConstraint.constant = 16
         self.linesCollectionViewBottomConstraint.constant = -120
@@ -61,6 +66,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         mapView.camera = camera
     }
+    
     /**
      This method is used to plot the stations of a certain line on the map. And then plot the bus and start moving it along the line.
      

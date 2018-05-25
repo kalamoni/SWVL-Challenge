@@ -23,9 +23,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QcT-n5-LrW" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="MapView">
+                                    <accessibilityTraits key="traits" updatesFrequently="YES" allowsDirectInteraction="YES"/>
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvl-LC-i46">
                                 <rect key="frame" x="317" y="498" width="42" height="42"/>
+                                <accessibility key="accessibilityConfiguration" identifier="LocateMeButton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="bVZ-Zn-8Hp"/>
                                     <constraint firstAttribute="width" constant="42" id="sNx-eU-jM6"/>
@@ -56,6 +61,9 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="W90-ar-3fv">
                                                     <rect key="frame" x="20" y="15" width="20" height="40"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="BusLineImage">
+                                                        <bool key="isElement" value="YES"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="6he-Te-5HW"/>
                                                         <constraint firstAttribute="width" constant="20" id="911-N6-ftO"/>
@@ -63,12 +71,14 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjY-HL-eVa">
                                                     <rect key="frame" x="50" y="13" width="206" height="19.5"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="BusLineFrom"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4y-8u-fVU">
                                                     <rect key="frame" x="50" y="37.5" width="206" height="19.5"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="BusLineTo"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -99,13 +109,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QcT-n5-LrW" secondAttribute="bottom" id="2Zh-iq-EAc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QcT-n5-LrW" secondAttribute="trailing" id="AfC-p6-10N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wvl-LC-i46" secondAttribute="trailing" constant="16" id="GQb-bV-yYY"/>
-                            <constraint firstItem="QcT-n5-LrW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OnI-Rd-h5r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Wvl-LC-i46" secondAttribute="bottom" constant="127" id="Q1D-Hd-IKU"/>
                             <constraint firstItem="zWr-va-fhG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Tud-pM-OEQ"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aPf-Tl-uNG"/>
                             <constraint firstItem="QcT-n5-LrW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ebD-0l-XdR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zWr-va-fhG" secondAttribute="bottom" constant="33" id="gTW-rg-4Xw"/>
-                            <constraint firstItem="QcT-n5-LrW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="iH6-6U-C9W"/>
                             <constraint firstItem="zWr-va-fhG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zuv-cU-8tC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -126,18 +134,23 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sJ9-e5-N4P">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="282"/>
                             <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" identifier="StationFullImage">
+                                <bool key="isElement" value="YES"/>
+                            </accessibility>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="sJ9-e5-N4P" secondAttribute="height" multiplier="125:94" id="kWl-tn-oZd"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CX0-9C-eBa">
                             <rect key="frame" x="38" y="312" width="299" height="24"/>
+                            <accessibility key="accessibilityConfiguration" identifier="StationFullTitle"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uk8-IM-yCV">
                             <rect key="frame" x="24" y="44" width="42" height="42"/>
+                            <accessibility key="accessibilityConfiguration" identifier="CloseButton"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="0CA-vJ-df7"/>
                                 <constraint firstAttribute="width" constant="42" id="gGb-mG-WjD"/>
@@ -152,6 +165,7 @@
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="477-ah-S3f">
                             <rect key="frame" x="38" y="356" width="299" height="20.5"/>
+                            <accessibility key="accessibilityConfiguration" identifier="StationFullAddress"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -159,6 +173,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pP-9O-hgg">
                             <rect key="frame" x="36" y="549" width="303" height="50"/>
                             <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.47965782010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" identifier="BookmarkButton"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="45l-nc-drU"/>
                             </constraints>
@@ -172,6 +187,9 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <accessibility key="accessibilityConfiguration" identifier="StationView">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
                     <constraints>
                         <constraint firstItem="CX0-9C-eBa" firstAttribute="leading" secondItem="PlD-Qe-2X4" secondAttribute="leading" constant="38" id="1IJ-hw-DRg"/>
                         <constraint firstItem="7pP-9O-hgg" firstAttribute="leading" secondItem="PlD-Qe-2X4" secondAttribute="leading" constant="36" id="6G5-Zl-yiH"/>
