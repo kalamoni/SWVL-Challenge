@@ -21,12 +21,20 @@ class NetworkManager {
     
     /**
      This method is used to fetch the lines over the network, and calls a handler upon completion.
+     
+     - parameter completionHandler: The completion handler to call when the load request is complete. This handler is executed on the delegate queue.
+     - parameter data: An optional Data reflects the returned data from the request.
+     - parameter urlResponse: An optional URLResponse reflects the request.
+     - parameter error: An optional Error depends on whether the request succeeded or failed with errors.
+     
      */
-    func fetchLines(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func fetchLines(completionHandler: @escaping (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         var dataTask: URLSessionDataTask?
         let urlAPI = URL(string: LinesAPI)
         
         guard let url = urlAPI else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             completionHandler(nil, nil, NetworkError.APISyntaxError)
             return
         }
@@ -38,6 +46,7 @@ class NetworkManager {
         dataTask?.cancel()
         dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
             defer { dataTask = nil }
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             completionHandler(data, response, error)
         }
         dataTask?.resume()
@@ -45,12 +54,19 @@ class NetworkManager {
     
     /**
      This method is used to retrieve an image URL over the netwrok, and calls a handler upon completion.
+     
+     - parameter imgURL: A string represents the image URL.
+     - parameter completionHandler: The completion handler to call when the load request is complete. This handler is executed on the delegate queue.
+     - parameter success: A boolean reflects whether the fetch request succeeded or not.
+     - parameter img: An optional UIImage depends on whether the fetch request succeeded or not.
      */
     func fetchImage(withURL imgURL: String, completionHandler: @escaping (_ success: Bool, _ img: UIImage?) -> Void) {
         
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let urlAPI = URL(string: imgURL)
         
         guard let url = urlAPI else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             completionHandler(false, nil)
             return
         }
@@ -61,6 +77,7 @@ class NetworkManager {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let error = error {
                 completionHandler(false, nil)
                 print("Error fetching image: \(error.localizedDescription)")
@@ -82,12 +99,18 @@ class NetworkManager {
     
     /**
      This method is used to retrieve an image URL over the netwrok, and calls a handler upon completion.
+     
+     - parameter id: A string represents station's ID.
+     - parameter completionHandler: The completion handler to call when the load request is complete. This handler is executed on the delegate queue.
+     - parameter success: A boolean reflects whether the request succeeded or not.
      */
     func bookmarkStation(withID id: String, completionHandler: @escaping (_ success: Bool) -> Void) {
         
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let urlAPI = URL(string: "http://private-ab8af-swvl.apiary-mock.com/station/\(id)/bookmark")
         
         guard let url = urlAPI else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             completionHandler(false)
             return
         }
@@ -98,6 +121,7 @@ class NetworkManager {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let error = error {
                 completionHandler(false)
                 print("Error bookmarking station: \(error.localizedDescription)")

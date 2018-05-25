@@ -45,10 +45,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         mapView.accessibilityElementsHidden = false
         mapView.accessibilityIdentifier = "mapView"
         
-        
         self.locateMeBottomConstraint.constant = 16
         self.linesCollectionViewBottomConstraint.constant = -120
-        
     }
     
     override func didReceiveMemoryWarning() {
